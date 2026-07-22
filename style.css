@@ -763,6 +763,11 @@ body{
     font-weight:600;
 }
 
+.gift-section p{
+    margin:6px 0;
+    line-height:1.5;
+}
+
 .gift-box{
 
 
@@ -908,42 +913,97 @@ body{
 
 @media (max-width:768px){
 
+    /* Overall spacing */
+    #surprise{
+        padding:20px 15px;
+    }
+
     .surprise-content{
-
-        gap:14px;
-
+        max-width:100%;
+        gap:12px;
     }
 
+    /* Title */
     .surprise-title{
-
-        font-size:2.3rem;
-
+        font-size:2rem;
+        line-height:1.2;
     }
 
+    /* Typing text */
     #typing{
-
-        font-size:1.2rem;
-
+        font-size:1.1rem;
+        min-height:35px;
     }
 
-    .cake{
-
-        width:145px;
-        height:145px;
-
+    /* Cake */
+    .cake-container{
+        margin-top:0;
+        transform:scale(.8);
     }
 
-    .gift-box{
-
-        width:110px;
-        height:110px;
-
+    /* Gift message */
+    .gift-section{
+        gap:8px;
+        margin-top:0;
     }
 
     .gift-section h3{
+        padding-top:15px;
+        font-size:0.95rem;
+        line-height:1.5;
+    }
 
+    /* Gift */
+    .gift-box{
+        width:95px;
+        height:95px;
+    }
+
+    .gift-base{
+        width:95px;
+        height:68px;
+    }
+
+    .gift-lid{
+        width:105px;
+        height:22px;
+        left:-5px;
+    }
+
+    .gift-ribbon.vertical{
+        left:42px;
+        width:10px;
+        height:95px;
+    }
+
+    .gift-ribbon.horizontal{
+        width:95px;
+        height:10px;
+        top:33px;
+    }
+
+}
+
+@media (max-width:430px){
+
+    .surprise-title{
+        font-size:1.6rem;
+    }
+
+    #typing{
         font-size:1rem;
+    }
 
+    .cake-container{
+        transform:scale(.68);
+    }
+
+    .gift-section h3{
+        font-size:.85rem;
+    }
+
+    .gift-box{
+        transform:scale(.85);
     }
 
 }
