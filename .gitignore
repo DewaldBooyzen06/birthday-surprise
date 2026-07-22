@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# VS Code
+.vscode/settings.json
+
+# Logs
+*.log
+
+# Node (if you ever add npm later)
+node_modules/
