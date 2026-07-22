@@ -74,7 +74,7 @@ const glassCard = document.querySelector(".glass-card");
 const surprise = document.getElementById("surprise");
 const typing = document.getElementById("typing");
 
-const birthdayMessage = "To the most amazing friend... 🎂❤️";
+const birthdayMessage = "Aan die beste mens op die planeet... 🎂❤️";
 
 // Typewriter Effect
 function typeWriter(text) {
@@ -122,6 +122,10 @@ startBtn.addEventListener("click", () => {
         glassCard.style.transform = "translateY(-40px) scale(.9)";
         glassCard.style.pointerEvents = "none";
 
+        setTimeout(() => {
+            glassCard.style.display = "none";
+        }, 800);
+
         surprise.classList.remove("hidden");
         surprise.classList.add("visible");
 
@@ -158,4 +162,43 @@ function createSparkle(){
 }
 
 setInterval(createSparkle,250);
+
+// =========================
+// Gift Box
+// =========================
+
+const giftBox = document.getElementById("giftBox");
+const letter = document.getElementById("letter");
+
+giftBox.addEventListener("click", () => {
+
+    if (giftBox.classList.contains("open")) return;
+
+    giftBox.classList.add("open");
+
+    confetti({
+
+        particleCount:120,
+
+        spread:90,
+
+        origin:{ y:0.65 }
+
+    });
+
+    setTimeout(() => {
+
+        giftBox.style.opacity = "0";
+        giftBox.style.transform = "scale(.5)";
+
+    },600);
+
+    setTimeout(() => {
+
+        letter.classList.remove("hidden");
+        letter.classList.add("show");
+
+    },1200);
+
+});
 
