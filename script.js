@@ -188,8 +188,11 @@ giftBox.addEventListener("click", () => {
 
     setTimeout(() => {
 
+        giftBox.style.transition = ".6s";
+
         giftBox.style.opacity = "0";
-        giftBox.style.transform = "scale(.5)";
+        giftBox.style.transform = "scale(.3)";
+        giftBox.style.pointerEvents = "none";
 
     },600);
 
@@ -199,6 +202,20 @@ giftBox.addEventListener("click", () => {
         letter.classList.add("show");
 
     },1200);
+
+});
+
+
+const closeLetter = document.getElementById("closeLetter");
+
+closeLetter.addEventListener("click", () => {
+
+    letter.classList.remove("show");
+    letter.classList.add("hidden");
+
+    giftBox.style.opacity = "1";
+    giftBox.style.transform = "scale(1)";
+    giftBox.style.pointerEvents = "auto";
 
 });
 

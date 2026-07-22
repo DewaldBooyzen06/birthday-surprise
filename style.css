@@ -877,37 +877,66 @@ body{
 
     position:absolute;
 
-    width:90%;
-    max-width:650px;
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%) scale(.7);
+
+    width:min(700px, 90vw);
+    max-height:80vh;
+
+    overflow-y:auto;
 
     padding:30px;
 
     border-radius:20px;
 
-    background:rgba(2, 37, 57, 0.15);
-
+    background:rgba(255,255,255,.18);
     backdrop-filter:blur(20px);
 
+    box-sizing:border-box;
+
     opacity:0;
-
-    transform:scale(.5);
-
-    pointer-events:none;
+    visibility:hidden;
 
     transition:
-
         opacity .6s ease,
-        transform .6s ease;
+        transform .6s ease,
+        visibility .6s;
+
+    z-index:20;
 
 }
 
 .letter.show{
 
     opacity:1;
+    visibility:visible;
 
-    transform:scale(1);
+    transform:translate(-50%, -50%) scale(1);
 
-    pointer-events:auto;
+}
+
+.close-letter{
+
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    width:40px;
+    height:40px;
+
+    border:none;
+    border-radius:50%;
+
+    background:white;
+    color:#ff4d6d;
+
+    font-size:1.2rem;
+    font-weight:bold;
+
+    cursor:pointer;
 
 }
 
@@ -1005,20 +1034,15 @@ body{
     /* Letter */
     .letter{
 
-        position: relative;
+    width:92vw;
 
-        top: auto;
-        left: auto;
-        transform: none;
+    max-height:75vh;
 
-        width: 100%;
-        max-width: 100%;
+    padding:20px;
 
-        margin: 30px auto 0;
+    font-size:.95rem;
 
-        box-sizing: border-box;
-
-    }
+}
 
 }
 
