@@ -118,10 +118,12 @@ startBtn.addEventListener("click", () => {
 
     setTimeout(() => {
 
-        glassCard.style.display = "none";
+        glassCard.style.opacity = "0";
+        glassCard.style.transform = "translateY(-40px) scale(.9)";
+        glassCard.style.pointerEvents = "none";
 
-        // Show surprise section
         surprise.classList.remove("hidden");
+        surprise.classList.add("visible");
 
         // Launch confetti
         launchConfetti();
@@ -132,3 +134,28 @@ startBtn.addEventListener("click", () => {
     }, 700);
 
 });
+
+function createSparkle(){
+
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "sparkle";
+
+    sparkle.innerHTML = "✨";
+
+    sparkle.style.left = Math.random()*100 + "%";
+
+    sparkle.style.top = Math.random()*100 + "%";
+
+    surprise.appendChild(sparkle);
+
+    setTimeout(()=>{
+
+        sparkle.remove();
+
+    },2000);
+
+}
+
+setInterval(createSparkle,250);
+

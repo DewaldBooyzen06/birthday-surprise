@@ -60,6 +60,10 @@ body{
 
     box-shadow:0 20px 40px rgba(0,0,0,.3);
 
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
 }
 
 h1{
@@ -287,35 +291,50 @@ body{
 
 }
 
-.hidden{
-
-    display:none;
-
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(40px);
 }
 
-#surprise{
+.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
 
-    position:relative;
+#surprise {
 
-    z-index:2;
+    position: absolute;
+    inset: 0;
 
-    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    text-align:center;
+    text-align: center;
 
-    width:90%;
+    color: white;
 
-    max-width:900px;
+    padding: 40px;
 
-    animation:fadeUp 1s;
+    z-index: 2;
+
+    transition: all .8s ease;
 
 }
 
 .surprise-title{
 
-    font-size:4rem;
+    font-size:4.5rem;
 
-    margin-bottom:25px;
+    animation:popIn 1s ease;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.5);
 
 }
 
@@ -375,5 +394,333 @@ body{
 
     }
 
+}
+
+@keyframes popIn{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.4);
+
+    }
+
+    70%{
+
+        transform:scale(1.1);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+.sparkle{
+
+    position:absolute;
+
+    color:white;
+
+    animation:sparkle 2s linear infinite;
+
+    pointer-events:none;
+
+}
+
+@keyframes sparkle{
+
+    0%{
+
+        opacity:0;
+        transform:scale(.2);
+
+    }
+
+    50%{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+    100%{
+
+        opacity:0;
+        transform:scale(.2);
+
+    }
+
+}
+
+/* ==========================
+   Birthday Cake
+========================== */
+
+.cake-container{
+
+    margin:40px 0;
+
+    animation:floatCake 3s ease-in-out infinite;
+
+}
+
+.cake{
+
+    position:relative;
+
+    width:220px;
+
+    height:220px;
+
+}
+
+/* Cake Layers */
+
+.layer{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.top{
+
+    width:120px;
+    height:40px;
+
+    top:80px;
+
+    background:#ffb3c7;
+
+}
+
+.middle{
+
+    width:160px;
+    height:45px;
+
+    top:120px;
+
+    background:#ff8fab;
+
+}
+
+.bottom{
+
+    width:200px;
+    height:55px;
+
+    top:165px;
+
+    background:#ff7096;
+
+}
+
+/* Icing */
+
+.icing{
+
+    position:absolute;
+
+    width:130px;
+
+    height:20px;
+
+    background:white;
+
+    left:50%;
+
+    top:70px;
+
+    transform:translateX(-50%);
+
+    border-radius:20px;
+
+    box-shadow:
+        0 4px 10px rgba(255,255,255,.4);
+
+}
+
+/* Candles */
+
+.candles{
+
+    position:absolute;
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:22px;
+
+}
+
+.candle{
+
+    width:12px;
+
+    height:55px;
+
+    background:white;
+
+    border-radius:6px;
+
+    position:relative;
+
+}
+
+.candle:nth-child(2){
+
+    height:60px;
+
+}
+
+.flame{
+
+    position:absolute;
+
+    width:16px;
+
+    height:22px;
+
+    background:gold;
+
+    border-radius:50% 50% 50% 50%;
+
+    left:50%;
+
+    top:-20px;
+
+    transform:translateX(-50%);
+
+    animation:flicker .15s infinite alternate;
+
+    box-shadow:
+        0 0 15px orange,
+        0 0 35px gold;
+
+}
+
+/* Floating */
+
+@keyframes floatCake{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Candle Flicker */
+
+@keyframes flicker{
+
+    from{
+
+        transform:
+            translateX(-50%)
+            rotate(-3deg)
+            scale(.95);
+
+    }
+
+    to{
+
+        transform:
+            translateX(-50%)
+            rotate(3deg)
+            scale(1.05);
+
+    }
+
+}
+
+.sprinkles{
+
+    position:absolute;
+
+    width:130px;
+
+    top:95px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+.sprinkles span{
+
+    position:absolute;
+
+    width:8px;
+
+    height:3px;
+
+    border-radius:3px;
+
+}
+
+.sprinkles span:nth-child(1){
+    background:#4cc9f0;
+    left:10px;
+}
+
+.sprinkles span:nth-child(2){
+    background:#ffd60a;
+    left:35px;
+}
+
+.sprinkles span:nth-child(3){
+    background:#06d6a0;
+    left:60px;
+}
+
+.sprinkles span:nth-child(4){
+    background:#ff006e;
+    left:85px;
+}
+
+.sprinkles span:nth-child(5){
+    background:#8338ec;
+    left:105px;
+}
+
+.sprinkles span:nth-child(6){
+    background:#fb5607;
+    left:55px;
+    top:12px;
 }
 
