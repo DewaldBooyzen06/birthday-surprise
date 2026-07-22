@@ -933,10 +933,18 @@ body{
     background:white;
     color:#ff4d6d;
 
-    font-size:1.2rem;
+    font-size:1.4rem;
     font-weight:bold;
 
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.close-letter:hover{
+
+    transform:rotate(90deg) scale(1.1);
 
 }
 

@@ -66,7 +66,7 @@ for (let i = 0; i < 120; i++) {
 }
 
 // =========================
-// Birthday Surprise
+// Landing Page
 // =========================
 
 const startBtn = document.getElementById("startBtn");
@@ -76,12 +76,12 @@ const typing = document.getElementById("typing");
 
 const birthdayMessage = "Aan die beste mens op die planeet... 🎂❤️";
 
-// Typewriter Effect
+// Typewriter
 function typeWriter(text) {
 
-    let i = 0;
-
     typing.textContent = "";
+
+    let i = 0;
 
     const interval = setInterval(() => {
 
@@ -90,7 +90,9 @@ function typeWriter(text) {
         i++;
 
         if (i >= text.length) {
+
             clearInterval(interval);
+
         }
 
     }, 70);
@@ -101,67 +103,65 @@ function typeWriter(text) {
 function launchConfetti() {
 
     confetti({
+
         particleCount: 180,
         spread: 120,
         origin: { y: 0.6 }
+
     });
 
 }
 
-// Button Click
+// Landing Button
 startBtn.addEventListener("click", () => {
 
-    // Fade out landing card
-    glassCard.style.transition = "all 0.8s ease";
+    glassCard.style.transition = "all .8s ease";
     glassCard.style.opacity = "0";
-    glassCard.style.transform = "scale(0.9)";
+    glassCard.style.transform = "translateY(-40px) scale(.9)";
+    glassCard.style.pointerEvents = "none";
 
     setTimeout(() => {
 
-        glassCard.style.opacity = "0";
-        glassCard.style.transform = "translateY(-40px) scale(.9)";
-        glassCard.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            glassCard.style.display = "none";
-        }, 800);
+        glassCard.style.display = "none";
 
         surprise.classList.remove("hidden");
         surprise.classList.add("visible");
 
-        // Launch confetti
         launchConfetti();
 
-        // Start typing
         typeWriter(birthdayMessage);
 
-    }, 700);
+    }, 800);
 
 });
 
-function createSparkle(){
+// =========================
+// Sparkles
+// =========================
+
+function createSparkle() {
+
+    if (surprise.classList.contains("hidden")) return;
 
     const sparkle = document.createElement("div");
 
     sparkle.className = "sparkle";
-
     sparkle.innerHTML = "✨";
 
-    sparkle.style.left = Math.random()*100 + "%";
-
-    sparkle.style.top = Math.random()*100 + "%";
+    sparkle.style.left = Math.random() * 100 + "%";
+    sparkle.style.top = Math.random() * 100 + "%";
 
     surprise.appendChild(sparkle);
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         sparkle.remove();
 
-    },2000);
+    }, 2000);
 
 }
 
-setInterval(createSparkle,250);
+setInterval(createSparkle, 250);
 
 // =========================
 // Gift Box
@@ -169,53 +169,74 @@ setInterval(createSparkle,250);
 
 const giftBox = document.getElementById("giftBox");
 const letter = document.getElementById("letter");
+const closeLetter = document.getElementById("closeLetter");
 
 giftBox.addEventListener("click", () => {
 
-    if (giftBox.classList.contains("open")) return;
+    // Don't reopen while already open
+    if (letter.classList.contains("show")) return;
 
     giftBox.classList.add("open");
 
     confetti({
 
-        particleCount:120,
-
-        spread:90,
-
-        origin:{ y:0.65 }
+        particleCount: 120,
+        spread: 90,
+        origin: { y: 0.65 }
 
     });
 
     setTimeout(() => {
 
-        giftBox.style.transition = ".6s";
-
+        giftBox.style.transition = ".6s ease";
         giftBox.style.opacity = "0";
         giftBox.style.transform = "scale(.3)";
         giftBox.style.pointerEvents = "none";
 
-    },600);
+    }, 600);
 
     setTimeout(() => {
 
         letter.classList.remove("hidden");
         letter.classList.add("show");
 
-    },1200);
+    }, 1200);
 
 });
 
+// =========================
+// Close Letter
+// =========================
 
-const closeLetter = document.getElementById("closeLetter");
+if (closeLetter) {
 
-closeLetter.addEventListener("click", () => {
+    closeLetter.addEventListener("click", () => {
 
-    letter.classList.remove("show");
-    letter.classList.add("hidden");
+        // Hide letter
+        letter.classList.remove("show");
 
-    giftBox.style.opacity = "1";
-    giftBox.style.transform = "scale(1)";
-    giftBox.style.pointerEvents = "auto";
+        setTimeout(() => {
 
-});
+            letter.classList.add("hidden");
+
+            // Reset gift
+            giftBox.classList.remove("open");
+
+            giftBox.style.transition = ".5s ease";
+            giftBox.style.opacity = "0";
+            giftBox.style.transform = "scale(.7)";
+            giftBox.style.pointerEvents = "auto";
+
+            requestAnimationFrame(() => {
+
+                giftBox.style.opacity = "1";
+                giftBox.style.transform = "scale(1)";
+
+            });
+
+        }, 500);
+
+    });
+
+}
 
