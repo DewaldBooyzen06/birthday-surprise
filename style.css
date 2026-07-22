@@ -287,3 +287,93 @@ body{
 
 }
 
+.hidden{
+
+    display:none;
+
+}
+
+#surprise{
+
+    position:relative;
+
+    z-index:2;
+
+    color:white;
+
+    text-align:center;
+
+    width:90%;
+
+    max-width:900px;
+
+    animation:fadeUp 1s;
+
+}
+
+.surprise-title{
+
+    font-size:4rem;
+
+    margin-bottom:25px;
+
+}
+
+.message{
+
+    font-size:1.2rem;
+
+    margin-top:35px;
+
+    line-height:1.8;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+#typing{
+
+    min-height:70px;
+
+    font-size:2rem;
+
+    color:#FFE082;
+
+}
+
+#typing::after{
+
+    content:"|";
+
+    animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
+

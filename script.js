@@ -1,81 +1,134 @@
+// =========================
+// Background Animations
+// =========================
+
 const balloons = document.getElementById("balloons");
 const hearts = document.getElementById("hearts");
 const stars = document.getElementById("stars");
 
-function createBalloon(){
+// Floating Balloons
+function createBalloon() {
 
     const balloon = document.createElement("div");
 
     balloon.className = "balloon";
-
     balloon.innerHTML = "🎈";
 
-    balloon.style.left = Math.random()*100 + "%";
-
-    balloon.style.animationDuration =
-        8 + Math.random()*8 + "s";
-
-    balloon.style.fontSize =
-        35 + Math.random()*25 + "px";
+    balloon.style.left = Math.random() * 100 + "%";
+    balloon.style.animationDuration = 8 + Math.random() * 8 + "s";
+    balloon.style.fontSize = 35 + Math.random() * 25 + "px";
 
     balloons.appendChild(balloon);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         balloon.remove();
-    },16000);
+    }, 16000);
 
 }
 
-setInterval(createBalloon,800);
+setInterval(createBalloon, 800);
 
-function createHeart(){
+// Floating Hearts
+function createHeart() {
 
     const heart = document.createElement("div");
 
     heart.className = "heart";
-
     heart.innerHTML = "❤";
 
-    heart.style.left = Math.random()*100 + "%";
-
-    heart.style.animationDuration =
-        6 + Math.random()*5 + "s";
-
-    heart.style.fontSize =
-        18 + Math.random()*25 + "px";
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.animationDuration = 6 + Math.random() * 5 + "s";
+    heart.style.fontSize = 18 + Math.random() * 25 + "px";
 
     hearts.appendChild(heart);
 
-    setTimeout(()=>{
-
+    setTimeout(() => {
         heart.remove();
-
-    },12000);
+    }, 12000);
 
 }
 
-setInterval(createHeart,900);
+setInterval(createHeart, 900);
 
-for(let i=0;i<120;i++){
+// Twinkling Stars
+for (let i = 0; i < 120; i++) {
 
-    const star=document.createElement("div");
+    const star = document.createElement("div");
 
-    star.className="star";
+    star.className = "star";
 
-    star.style.left=Math.random()*100+"%";
-
-    star.style.top=Math.random()*100+"%";
-
-    star.style.animationDelay=Math.random()*2+"s";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 2 + "s";
 
     stars.appendChild(star);
 
 }
 
-const startBtn=document.getElementById("startBtn");
+// =========================
+// Birthday Surprise
+// =========================
 
-startBtn.addEventListener("click",()=>{
+const startBtn = document.getElementById("startBtn");
+const glassCard = document.querySelector(".glass-card");
+const surprise = document.getElementById("surprise");
+const typing = document.getElementById("typing");
 
-    alert("Almost there... 🎉");
+const birthdayMessage = "To the most amazing friend... 🎂❤️";
+
+// Typewriter Effect
+function typeWriter(text) {
+
+    let i = 0;
+
+    typing.textContent = "";
+
+    const interval = setInterval(() => {
+
+        typing.textContent += text.charAt(i);
+
+        i++;
+
+        if (i >= text.length) {
+            clearInterval(interval);
+        }
+
+    }, 70);
+
+}
+
+// Confetti
+function launchConfetti() {
+
+    confetti({
+        particleCount: 180,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+
+}
+
+// Button Click
+startBtn.addEventListener("click", () => {
+
+    // Fade out landing card
+    glassCard.style.transition = "all 0.8s ease";
+    glassCard.style.opacity = "0";
+    glassCard.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+
+        glassCard.style.display = "none";
+
+        // Show surprise section
+        surprise.classList.remove("hidden");
+
+        // Launch confetti
+        launchConfetti();
+
+        // Start typing
+        typeWriter(birthdayMessage);
+
+    }, 700);
 
 });
