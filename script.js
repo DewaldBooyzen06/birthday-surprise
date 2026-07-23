@@ -74,7 +74,7 @@ const glassCard = document.querySelector(".glass-card");
 const surprise = document.getElementById("surprise");
 const typing = document.getElementById("typing");
 
-const birthdayMessage = "Aan die beste mens op die planeet... 🎂❤️";
+const birthdayMessage = "Aan my 'ride or die' ... 🎂❤️";
 
 // Typewriter
 function typeWriter(text) {
